@@ -5,9 +5,14 @@ import javafx.application.Application;
 import javafx.embed.swing.SwingNode;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -72,23 +77,31 @@ public class Launcher extends Application{
 		
 	    readFile(a, "Hoffmann.txt");
 	    
-	    System.out.print(a);
+	    //System.out.print(a);
 	    
 	    long timeEnd = System.currentTimeMillis();
         System.out.println("Laufzeit: " + (timeEnd - timeStart) + " Millisek.");
-		
-		
-        HBox p = new HBox();		
-
-        timeStart = System.currentTimeMillis();
-        GraphTable graphTable1 = new GraphTable(a);
-        timeEnd = System.currentTimeMillis();
-        System.out.println("Laufzeit: " + (timeEnd - timeStart) + " Millisek.");
-		
+		/*Ende des original main-Methoden Quellcodes*/
         
-		p.getChildren().add(graphTable1);
+        
+        VBox menuAndContent = new VBox();	
+		MenuBar menuBar = new ownMenuBar();        
+        menuAndContent.getChildren().add(menuBar);
+        HBox content = new HBox();
+        
+        GraphTable graphTable1 = new GraphTable(a);
+        content.getChildren().add(graphTable1);
+        
+        Pane p = new Pane();
+        p.setPrefSize(200, 500);
+        content.getChildren().add(p);
+        
+        GraphTable graphTable2 = new GraphTable(a);
+        content.getChildren().add(graphTable2);
+        
+		menuAndContent.getChildren().add(content);
 		
-		Scene s1 = new Scene(p);
+		Scene s1 = new Scene(menuAndContent);
 		
 		primaryStage.setScene(s1);
 		primaryStage.show();
