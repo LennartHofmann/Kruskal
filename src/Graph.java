@@ -1,15 +1,7 @@
-import javax.swing.text.StyledEditorKit.ForegroundAction;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-
 public class Graph {
 
 	public Edge[] edges;
-	
+	public boolean isEditable;
 	
 	
 	public Graph() {
@@ -18,6 +10,7 @@ public class Graph {
 			this.edges[i] = new Edge(this);
 		}
 		
+		isEditable = true;
 		
 		
 	}
@@ -49,6 +42,16 @@ public class Graph {
 	}
 	
 	
+	public boolean isEditable() {
+		return isEditable;
+	}
+
+
+	public void setEditable(boolean isEditable) {
+		this.isEditable = isEditable;
+	}
+
+
 	public long[] getKnownNodes() {
 		long knownNodes[] = new long[100];
 		

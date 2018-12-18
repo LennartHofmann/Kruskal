@@ -20,14 +20,12 @@ public class Launcher extends Application{
 
 	public static void main(String[] args) throws Exception{
         launch();
-        
-	}
+    }
 	
 
 	
-	
+	/*old readFile
 	public static void readFile(Graph graph, String fileName) throws Exception{
-
 	    FileReader fr = new FileReader(new File(fileName));
 	    BufferedReader br = new BufferedReader(fr);
 	    String s = new String();
@@ -60,50 +58,24 @@ public class Launcher extends Application{
 		    lengh = 0;
 		    s = br.readLine();
 		}
-		
-		
+
 		
 	}
-
+	*/
 
 
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		/* Code aus main-Methode */
-		long timeStart = System.currentTimeMillis();
-		Graph a = new Graph();
-		
-	    readFile(a, "Hoffmann.txt");
-	    
-	    //System.out.print(a);
-	    
-	    long timeEnd = System.currentTimeMillis();
-        System.out.println("Laufzeit: " + (timeEnd - timeStart) + " Millisek.");
-		/*Ende des original main-Methoden Quellcodes*/
+		        
+        MenuAndContent app = new MenuAndContent(primaryStage);
         
         
-        VBox menuAndContent = new VBox();	
-		MenuBar menuBar = new ownMenuBar();        
-        menuAndContent.getChildren().add(menuBar);
-        HBox content = new HBox();
-        
-        GraphTable graphTable1 = new GraphTable(a);
-        content.getChildren().add(graphTable1);
-        
-        Pane p = new Pane();
-        p.setPrefSize(200, 500);
-        content.getChildren().add(p);
-        
-        GraphTable graphTable2 = new GraphTable(a);
-        content.getChildren().add(graphTable2);
-        
-		menuAndContent.getChildren().add(content);
-		
-		Scene s1 = new Scene(menuAndContent);
+		Scene s1 = new Scene(app);
 		
 		primaryStage.setScene(s1);
+		primaryStage.setResizable(false);
 		primaryStage.show();
 		
 		
