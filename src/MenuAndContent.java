@@ -21,6 +21,7 @@ public class MenuAndContent extends VBox{
 	GraphTable graphTable1;
 	GraphTable graphTable2;
 	GridPane content;
+	GraphHead graphTable1Head;
 	GraphHead graphTable2Head;
 	Stage stage;
 	
@@ -36,19 +37,19 @@ public class MenuAndContent extends VBox{
 	     
 	    long timeStart = System.currentTimeMillis();
 	     
-	    GraphHead graphTable1Head = new GraphHead("Startgraph");
-	    this.content.add(graphTable1Head, 0, 0);
+	    this.graphTable1Head = new GraphHead("Startgraph");
+	    this.content.add(this.graphTable1Head, 0, 0);
 	    StackPane emptyPane = new StackPane();
 	    
 	    this.graphTable2Head = new GraphHead("Minimal Spanning Tree");
 	    //this.content.add(this.graphTable2Head, 1, 0);
 	    
 	    
-	    this.graphTable1 = new GraphTable(graph1, false);
+	    this.graphTable1 = new GraphTable(graph1, this, false);
 	    this.content.add(this.graphTable1, 0, 1);
 	    
 	     
-	    //this.graphTable2 = new GraphTable(new Graph(), true);
+	    //this.graphTable2 = new GraphTable(new Graph(), this, true);
 	    //this.content.add(this.graphTable2, 1, 1);
 	     
 	    long timeEnd = System.currentTimeMillis();

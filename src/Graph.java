@@ -10,12 +10,32 @@ public class Graph {
 			this.edges[i] = new Edge(this);
 		}
 		
-		isEditable = true;
+		isEditable = false;
 		
 		
 	}
 	
 	
+	public void removeEdge(int i) {
+		for (int z = i+1; z < this.edges.length; z++) {
+			this.edges[z-1].setStartNode(this.edges[z].getStartNode());
+			this.edges[z-1].setEndNode(this.edges[z].getEndNode());
+			this.edges[z-1].setLengh(this.edges[z].getLengh());
+			
+			if(this.edges[z].getLengh()==0) {
+				this.edges[z-1].setStartNode(this.edges[z].getStartNode());
+				this.edges[z-1].setEndNode(this.edges[z].getEndNode());
+				this.edges[z-1].setLengh(this.edges[z].getLengh());
+				
+				break;
+			}
+			
+		}
+	}
+	
+	
+	
+	/*
 	@Override
 	public String toString() {
 		String output = new String();
@@ -39,8 +59,9 @@ public class Graph {
 		//output = output + "\n";
 		
 		return (output);
+
 	}
-	
+	*/
 	
 	public boolean isEditable() {
 		return isEditable;
@@ -51,7 +72,7 @@ public class Graph {
 		this.isEditable = isEditable;
 	}
 
-
+	/*
 	public long[] getKnownNodes() {
 		long knownNodes[] = new long[100];
 		
@@ -93,5 +114,5 @@ public class Graph {
 		
 		return knownNodes;
 	}
-	
+	*/
 }
